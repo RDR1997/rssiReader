@@ -10,7 +10,6 @@ import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +32,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<x> extends AppCompatActivity {
+
+
+	double d1, d2, d3;
+
 	private static String TAG = "_RSSI";
 	private static int INTERVAL_FOR_RSSI = 15000; //in mSec
 	protected WifiManager mWifiManager;
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
 	private TextView distanceTextView;
 	private TextView distanceTextView2;
 	private TextView distanceTextView3;
+	private TextView xTextView;
+	private TextView yTextView;
 	private Button startButton;
 	private Handler wifiScanHandler;
 	private MyBroadcastReceiver myBroadcastReceiver;
@@ -79,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
 		distanceTextView = (TextView) findViewById(R.id.textViewDistance);
 		distanceTextView2 = (TextView) findViewById(R.id.textViewDistance2);
 		distanceTextView3 = (TextView) findViewById(R.id.textViewDistance3);
+		xTextView = (TextView) findViewById(R.id.textViewX);
+		yTextView = (TextView) findViewById(R.id.textViewY);
 		startButton = (Button) findViewById(R.id.start_stop);
 		wifiScanHandler = new Handler();
 		intentFilter = new IntentFilter();
@@ -119,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
 			distanceTextView.setText("0");
 			distanceTextView2.setText("0");
 			distanceTextView3.setText("0");
+			xTextView.setText("0");
+			yTextView.setText("0");
 
 
 			foo.close();
@@ -144,30 +153,39 @@ public class MainActivity extends AppCompatActivity {
 				rssiTextView.setText(String.valueOf(scanResult.level));
 				if (scanResult.level <= -30 && scanResult.level >= -35){
 					distanceTextView.setText("1");
+					d1 = 1;
 				}
 				if (scanResult.level < -35 && scanResult.level >= -40) {
 					distanceTextView.setText("2");
+					d1 = 2;
 				}
 				if (scanResult.level < -40 && scanResult.level >= -45) {
 					distanceTextView.setText("3");
+					d1 = 3;
 				}
 				if (scanResult.level < -45 && scanResult.level >= -50) {
 					distanceTextView.setText("4");
+					d1 = 4;
 				}
 				if (scanResult.level < -50 && scanResult.level >= -55) {
 					distanceTextView.setText("5");
+					d1 = 5;
 				}
 				if (scanResult.level < -60 && scanResult.level >= -65){
 					distanceTextView.setText("6");
+					d1 = 6;
 				}
 				if (scanResult.level < -65 && scanResult.level >= -70) {
 					distanceTextView.setText("7");
+					d1 = 7;
 				}
 				if (scanResult.level < -75 && scanResult.level >= -80) {
 					distanceTextView.setText("8");
+					d1 = 8;
 				}
 				if (scanResult.level < -80) {
 					distanceTextView.setText("9");
+					d1 = 9;
 				}
 
 
@@ -184,32 +202,42 @@ public class MainActivity extends AppCompatActivity {
 			if (scanResult.SSID.equals(ssid2)) {
 				ssidfound = true;
 				rssiTextView2.setText(String.valueOf(scanResult.level));
+
 				if (scanResult.level <= -50 && scanResult.level >= -54){
 					distanceTextView2.setText("1");
+					d2 = 1;
 				}
 				if (scanResult.level < -54 && scanResult.level >= -57.3333) {
 					distanceTextView2.setText("2");
+					d2 = 2;
 				}
 				if (scanResult.level < -57.3333 && scanResult.level >= -60.6667) {
 					distanceTextView2.setText("3");
+					d2 = 3;
 				}
 				if (scanResult.level < -60.6667 && scanResult.level >= -63.6667) {
 					distanceTextView2.setText("4");
+					d2 = 4;
 				}
 				if (scanResult.level < -63.6667 && scanResult.level >= -66.6667) {
 					distanceTextView2.setText("5");
+					d2 = 5;
 				}
 				if (scanResult.level < -66.6667 && scanResult.level >= -68){
 					distanceTextView2.setText("6");
+					d2 = 6;
 				}
 				if (scanResult.level < -68 && scanResult.level >= -69.3333) {
 					distanceTextView2.setText("7");
+					d2 = 7;
 				}
 				if (scanResult.level < -69.3333 && scanResult.level >= -75) {
 					distanceTextView2.setText("8");
+					d2 = 8;
 				}
 				if (scanResult.level < -75) {
 					distanceTextView2.setText("9");
+					d2 = 9;
 				}
 
 				DateFormat df = new SimpleDateFormat("yyyy-MM-dd G 'at' HH:mm:ss.SSSZ");
@@ -228,30 +256,39 @@ public class MainActivity extends AppCompatActivity {
 
 				if (scanResult.level <= -50 && scanResult.level >= -54){
 					distanceTextView3.setText("1");
+					d3 = 1;
 				}
 				if (scanResult.level < -54 && scanResult.level >= -57.3333) {
 					distanceTextView3.setText("2");
+					d3 = 2;
 				}
 				if (scanResult.level < -57.3333 && scanResult.level >= -60.6667) {
 					distanceTextView3.setText("3");
+					d3 = 3;
 				}
 				if (scanResult.level < -60.6667 && scanResult.level >= -63.6667) {
 					distanceTextView3.setText("4");
+					d3 = 4;
 				}
 				if (scanResult.level < -63.6667 && scanResult.level >= -66.6667) {
 					distanceTextView3.setText("5");
+					d3 = 5;
 				}
 				if (scanResult.level < -66.6667 && scanResult.level >= -68){
 					distanceTextView3.setText("6");
+					d3 = 6;
 				}
 				if (scanResult.level < -68 && scanResult.level >= -69.3333) {
 					distanceTextView3.setText("7");
+					d3 = 7;
 				}
 				if (scanResult.level < -69.3333 && scanResult.level >= -75) {
 					distanceTextView3.setText("8");
+					d3 = 8;
 				}
 				if (scanResult.level < -75) {
 					distanceTextView3.setText("9");
+					d3 = 9;
 				}
 
 				DateFormat df = new SimpleDateFormat("yyyy-MM-dd G 'at' HH:mm:ss.SSSZ");
@@ -263,6 +300,16 @@ public class MainActivity extends AppCompatActivity {
 
 				Log.i(TAG, data);
 			}
+
+			double x1=0,x2=4,x3=2,y1=0,y2=0,y3=6;
+			double A = 2*((x3-x1)*(y3-y2)-(y3-y1)*(x3-x2));
+
+			int x = (int) ((y3-y2)*((d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3) - (y3-y1)*(d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3)) / A);
+			int y = (int) ((x3-x1)*((d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3) - (x3-x2)*(d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3)) / A);
+
+			xTextView.setText(String.valueOf(x));
+			yTextView.setText(String.valueOf(y));
+
 
 		}
 		if (ssidfound == false) {
@@ -382,11 +429,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 	//public void calMetrix(){
-	//	double x,y,x1,x2,x3,y1,y2,y3,d1,d2,d3;
-	//	double A = 2*((x3-x1)*(y3-y2)-(y3-y1)*(x3-x2));
+	//double x1=2,x2=3,x3=4,y1=1,y2=2,y3=3;
+	//double A = 2*((x3-x1)*(y3-y2)-(y3-y1)*(x3-x2));
 
-	//x =	(y3-y2)*((d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3) - (y3-y1)*(d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3)) / A;
-	//y = (x3-x1)*((d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3) - (x3-x2)*(d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3)) / A;
+	//int x = (int) ((y3-y2)*((d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3) - (y3-y1)*(d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3)) / A);
+	//int y = (int) ((x3-x1)*((d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3) - (x3-x2)*(d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3)) / A);
+
+
+
+	//		yTextView.setText(String.valueOf(y));
 	}
 //}
 
