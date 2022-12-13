@@ -326,37 +326,7 @@ public class MainActivity<x> extends AppCompatActivity {
 
 	}
 
-	//public void wifiScanFailure() throws IOException {
-		// handle failure: new scan did NOT succeed
-		// consider using old scan results: these are the OLD results!
-	//	Log.i(TAG, "Previous Results");
-	//	List<ScanResult> mWifiList = mWifiManager.getScanResults();
-	//	boolean ssidfound = false;
-	//	String ssid = String.valueOf(ssidTextView.getText());
-	//	for (ScanResult scanResult : mWifiList) {
-	//		if (scanResult.SSID.equals(ssid)) {
-	//			ssidfound = true;
-	//			rssiTextView.setText(String.valueOf(scanResult.level));
-//				DateFormat df = new SimpleDateFormat("yyyy-MM-dd G 'at' HH:mm:ss.SSSZ");
-	//			String date = df.format(Calendar.getInstance().getTime());
-//
-	//			String data = date + " " + scanResult.SSID + " " + scanResult.level + "\n";
-//
-//				foo.write(data.getBytes());
-//
-//				Log.i(TAG, data);
-//			}
-//		}
-//		if (ssidfound == false) {
-//			startButton.setText("Start");
-//			rssiTextView.setText("0");
-//			Log.i(TAG, ssid + " Not Found");
 
-//			foo.close();
-//
-//			Toast.makeText(this, "SSID not Found", Toast.LENGTH_SHORT).show();
-//		}
-//	}
 
 	public void permissions(MainActivity thisActivity, String[] requiredPermission) {
 		// Here, thisActivity is the current activity
@@ -429,8 +399,6 @@ public class MainActivity<x> extends AppCompatActivity {
 
 
 	}
-//}
-
 
 class MyBroadcastReceiver extends BroadcastReceiver {
 
@@ -456,16 +424,9 @@ class MyBroadcastReceiver extends BroadcastReceiver {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-			//	} else {
-			//		Log.i("_RSSI", "Failed");
-					// scan failure handling
-			//		try {
-			//			mActivity.wifiScanFailure();
-			//		} catch (IOException e) {
-			//			e.printStackTrace();
+
 					}
 				}
 			}
 		}
 	}
-//}
