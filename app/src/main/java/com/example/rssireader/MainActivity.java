@@ -146,7 +146,7 @@ public class MainActivity<x> extends AppCompatActivity {
 		//String ssid = String.valueOf(ssidTextView.getText());
 		String ssid = getString(R.string.TheLastKnght97);
 		String ssid2 = getString(R.string.Pandula_B);
-		String ssid3 = getString(R.string.SLT_4GLTE);
+		String ssid3 = getString(R.string.sltgo);
 		for (ScanResult scanResult : mWifiList) {
 			if (scanResult.SSID.equals(ssid)) {
 				ssidfound = true;
@@ -326,38 +326,37 @@ public class MainActivity<x> extends AppCompatActivity {
 
 	}
 
-	public void wifiScanFailure() throws IOException {
+	//public void wifiScanFailure() throws IOException {
 		// handle failure: new scan did NOT succeed
 		// consider using old scan results: these are the OLD results!
-		Log.i(TAG, "Previous Results");
-		List<ScanResult> mWifiList = mWifiManager.getScanResults();
-		boolean ssidfound = false;
-		String ssid = String.valueOf(ssidTextView.getText());
-		for (ScanResult scanResult : mWifiList) {
-			if (scanResult.SSID.equals(ssid)) {
-				ssidfound = true;
-				rssiTextView.setText(String.valueOf(scanResult.level));
+	//	Log.i(TAG, "Previous Results");
+	//	List<ScanResult> mWifiList = mWifiManager.getScanResults();
+	//	boolean ssidfound = false;
+	//	String ssid = String.valueOf(ssidTextView.getText());
+	//	for (ScanResult scanResult : mWifiList) {
+	//		if (scanResult.SSID.equals(ssid)) {
+	//			ssidfound = true;
+	//			rssiTextView.setText(String.valueOf(scanResult.level));
+//				DateFormat df = new SimpleDateFormat("yyyy-MM-dd G 'at' HH:mm:ss.SSSZ");
+	//			String date = df.format(Calendar.getInstance().getTime());
+//
+	//			String data = date + " " + scanResult.SSID + " " + scanResult.level + "\n";
+//
+//				foo.write(data.getBytes());
+//
+//				Log.i(TAG, data);
+//			}
+//		}
+//		if (ssidfound == false) {
+//			startButton.setText("Start");
+//			rssiTextView.setText("0");
+//			Log.i(TAG, ssid + " Not Found");
 
-				DateFormat df = new SimpleDateFormat("yyyy-MM-dd G 'at' HH:mm:ss.SSSZ");
-				String date = df.format(Calendar.getInstance().getTime());
-
-				String data = date + " " + scanResult.SSID + " " + scanResult.level + "\n";
-
-				foo.write(data.getBytes());
-
-				Log.i(TAG, data);
-			}
-		}
-		if (ssidfound == false) {
-			startButton.setText("Start");
-			rssiTextView.setText("0");
-			Log.i(TAG, ssid + " Not Found");
-
-			foo.close();
-
-			Toast.makeText(this, "SSID not Found", Toast.LENGTH_SHORT).show();
-		}
-	}
+//			foo.close();
+//
+//			Toast.makeText(this, "SSID not Found", Toast.LENGTH_SHORT).show();
+//		}
+//	}
 
 	public void permissions(MainActivity thisActivity, String[] requiredPermission) {
 		// Here, thisActivity is the current activity
@@ -382,7 +381,7 @@ public class MainActivity<x> extends AppCompatActivity {
 
 	@Override
 	public void onRequestPermissionsResult(int requestCode,
-										   String[] permissions, int[] grantResults) {
+	   String[] permissions, int[] grantResults) {
 		switch (requestCode) {
 			case 111: {
 				// If request is cancelled, the result arrays are empty.
@@ -428,16 +427,7 @@ public class MainActivity<x> extends AppCompatActivity {
 	}
 
 
-	//public void calMetrix(){
-	//double x1=2,x2=3,x3=4,y1=1,y2=2,y3=3;
-	//double A = 2*((x3-x1)*(y3-y2)-(y3-y1)*(x3-x2));
 
-	//int x = (int) ((y3-y2)*((d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3) - (y3-y1)*(d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3)) / A);
-	//int y = (int) ((x3-x1)*((d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3) - (x3-x2)*(d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3)) / A);
-
-
-
-	//		yTextView.setText(String.valueOf(y));
 	}
 //}
 
@@ -466,16 +456,16 @@ class MyBroadcastReceiver extends BroadcastReceiver {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-				} else {
-					Log.i("_RSSI", "Failed");
+			//	} else {
+			//		Log.i("_RSSI", "Failed");
 					// scan failure handling
-					try {
-						mActivity.wifiScanFailure();
-					} catch (IOException e) {
-						e.printStackTrace();
+			//		try {
+			//			mActivity.wifiScanFailure();
+			//		} catch (IOException e) {
+			//			e.printStackTrace();
 					}
 				}
 			}
 		}
 	}
-}
+//}
