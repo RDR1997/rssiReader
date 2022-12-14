@@ -8,4 +8,6 @@
     <string name="SLT_4GLTE">SLT_4GLTE</string>
     <string name="sltgo">sltgo</string>
     <string name="connect">connect</string>
+    <string name="ConnectButton">connectMac</string>
+    <string name="connectMac">connect</string>
 </resources>
