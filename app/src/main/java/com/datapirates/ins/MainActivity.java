@@ -1,4 +1,4 @@
-package com.example.rssireader;
+package com.datapirates.ins;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -16,11 +16,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.example.rssireader.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -78,12 +79,6 @@ public class MainActivity<x> extends AppCompatActivity {
 		permissions(this, requiredpermissions);
 
 		ssidTextView = (TextView) findViewById(R.id.setSSID);
-	//	rssiTextView = (TextView) findViewById(R.id.textViewRssi);
-	//	rssiTextView2 = (TextView) findViewById(R.id.textViewRssi2);
-	//	rssiTextView3 = (TextView) findViewById(R.id.textViewRssi3);
-	//	distanceTextView = (TextView) findViewById(R.id.textViewDistance);
-	//	distanceTextView2 = (TextView) findViewById(R.id.textViewDistance2);
-	//	distanceTextView3 = (TextView) findViewById(R.id.textViewDistance3);
 		xTextView = (TextView) findViewById(R.id.textViewX);
 		yTextView = (TextView) findViewById(R.id.textViewY);
 		startButton = (Button) findViewById(R.id.start_stop);
@@ -120,18 +115,11 @@ public class MainActivity<x> extends AppCompatActivity {
 
 		} else if (startButton.getText().equals("Stop")) {
 			startButton.setText("Start");
-		//	rssiTextView.setText("0");
-		//	rssiTextView2.setText("0");
-		//	rssiTextView3.setText("0");
-		//	distanceTextView.setText("0");
-		//	distanceTextView2.setText("0");
-		//	distanceTextView3.setText("0");
 			xTextView.setText("0");
 			yTextView.setText("0");
-
-
 			foo.close();
 		}
+
 	}
 
 	public void scanForWifi() {
@@ -143,48 +131,37 @@ public class MainActivity<x> extends AppCompatActivity {
 	public void wifiScanSuccess() throws IOException {
 		List<ScanResult> mWifiList = mWifiManager.getScanResults();
 		boolean ssidfound = false;
-		//String ssid = String.valueOf(ssidTextView.getText());
 		String ssid = getString(R.string.TheLastKnght97);
 		String ssid2 = getString(R.string.Pandula_B);
 		String ssid3 = getString(R.string.sltgo);
 		for (ScanResult scanResult : mWifiList) {
 			if (scanResult.SSID.equals(ssid)) {
 				ssidfound = true;
-			//	rssiTextView.setText(String.valueOf(scanResult.level));
-				if (scanResult.level <= -30 && scanResult.level >= -35){
-			//		distanceTextView.setText("1");
+			if (scanResult.level <= -30 && scanResult.level >= -35){
 					d1 = 1;
 				}
 				if (scanResult.level < -35 && scanResult.level >= -40) {
-			//		distanceTextView.setText("2");
 					d1 = 2;
 				}
 				if (scanResult.level < -40 && scanResult.level >= -45) {
-			//		distanceTextView.setText("3");
 					d1 = 3;
 				}
 				if (scanResult.level < -45 && scanResult.level >= -50) {
-			//		distanceTextView.setText("4");
-					d1 = 4;
+						d1 = 4;
 				}
 				if (scanResult.level < -50 && scanResult.level >= -55) {
-			//		distanceTextView.setText("5");
 					d1 = 5;
 				}
 				if (scanResult.level < -60 && scanResult.level >= -65){
-			//		distanceTextView.setText("6");
 					d1 = 6;
 				}
 				if (scanResult.level < -65 && scanResult.level >= -70) {
-			//		distanceTextView.setText("7");
 					d1 = 7;
 				}
 				if (scanResult.level < -75 && scanResult.level >= -80) {
-			//		distanceTextView.setText("8");
 					d1 = 8;
 				}
 				if (scanResult.level < -80) {
-			//		distanceTextView.setText("9");
 					d1 = 9;
 				}
 
@@ -201,42 +178,31 @@ public class MainActivity<x> extends AppCompatActivity {
 
 			if (scanResult.SSID.equals(ssid2)) {
 				ssidfound = true;
-			//	rssiTextView2.setText(String.valueOf(scanResult.level));
-
 				if (scanResult.level <= -50 && scanResult.level >= -54){
-			//		distanceTextView2.setText("1");
 					d2 = 1;
 				}
 				if (scanResult.level < -54 && scanResult.level >= -57.3333) {
-			//		distanceTextView2.setText("2");
 					d2 = 2;
 				}
 				if (scanResult.level < -57.3333 && scanResult.level >= -60.6667) {
-			//		distanceTextView2.setText("3");
 					d2 = 3;
 				}
 				if (scanResult.level < -60.6667 && scanResult.level >= -63.6667) {
-			//		distanceTextView2.setText("4");
 					d2 = 4;
 				}
 				if (scanResult.level < -63.6667 && scanResult.level >= -66.6667) {
-			//		distanceTextView2.setText("5");
 					d2 = 5;
 				}
 				if (scanResult.level < -66.6667 && scanResult.level >= -68){
-			//		distanceTextView2.setText("6");
 					d2 = 6;
 				}
 				if (scanResult.level < -68 && scanResult.level >= -69.3333) {
-			//		distanceTextView2.setText("7");
 					d2 = 7;
 				}
 				if (scanResult.level < -69.3333 && scanResult.level >= -75) {
-			//		distanceTextView2.setText("8");
 					d2 = 8;
 				}
 				if (scanResult.level < -75) {
-			//		distanceTextView2.setText("9");
 					d2 = 9;
 				}
 
@@ -252,52 +218,38 @@ public class MainActivity<x> extends AppCompatActivity {
 
 			if (scanResult.SSID.equals(ssid3)) {
 				ssidfound = true;
-			//	rssiTextView3.setText(String.valueOf(scanResult.level));
-
 				if (scanResult.level <= -50 && scanResult.level >= -54){
-			//		distanceTextView3.setText("1");
 					d3 = 1;
 				}
 				if (scanResult.level < -54 && scanResult.level >= -57.3333) {
-			//		distanceTextView3.setText("2");
 					d3 = 2;
 				}
 				if (scanResult.level < -57.3333 && scanResult.level >= -60.6667) {
-			//		distanceTextView3.setText("3");
 					d3 = 3;
 				}
 				if (scanResult.level < -60.6667 && scanResult.level >= -63.6667) {
-			//		distanceTextView3.setText("4");
 					d3 = 4;
 				}
 				if (scanResult.level < -63.6667 && scanResult.level >= -66.6667) {
-			//		distanceTextView3.setText("5");
 					d3 = 5;
 				}
 				if (scanResult.level < -66.6667 && scanResult.level >= -68){
-			//		distanceTextView3.setText("6");
 					d3 = 6;
 				}
 				if (scanResult.level < -68 && scanResult.level >= -69.3333) {
-			//		distanceTextView3.setText("7");
 					d3 = 7;
 				}
 				if (scanResult.level < -69.3333 && scanResult.level >= -75) {
-			//		distanceTextView3.setText("8");
 					d3 = 8;
 				}
 				if (scanResult.level < -75) {
-			//		distanceTextView3.setText("9");
 					d3 = 9;
 				}
 
 				DateFormat df = new SimpleDateFormat("yyyy-MM-dd G 'at' HH:mm:ss.SSSZ");
 				String date = df.format(Calendar.getInstance().getTime());
-
 				String data = date + " " + scanResult.SSID + " " + scanResult.level + "\n";
-
 				foo.write(data.getBytes());
-
 				Log.i(TAG, data);
 			}
 
@@ -310,18 +262,14 @@ public class MainActivity<x> extends AppCompatActivity {
 			xTextView.setText(String.valueOf(x));
 			yTextView.setText(String.valueOf(y));
 
-
+			start();
 		}
-		if (ssidfound == false) {
-			startButton.setText("Start");
-		//	rssiTextView.setText("0");
-		//	rssiTextView2.setText("0");
-			Log.i(TAG, ssid + " Not Found");
-
-			foo.close();
-
-			Toast.makeText(this, "SSID not Found", Toast.LENGTH_SHORT).show();
-		}
+		//if (ssidfound == false) {
+		//	startButton.setText("Start");
+		//	Log.i(TAG, ssid + " Not Found");
+		//	foo.close();
+		//	Toast.makeText(this, "SSID not Found", Toast.LENGTH_SHORT).show();
+		//}
 
 
 	}
@@ -329,7 +277,6 @@ public class MainActivity<x> extends AppCompatActivity {
 
 
 	public void permissions(MainActivity thisActivity, String[] requiredPermission) {
-		// Here, thisActivity is the current activity
 		LinkedList<String> premissionList = new LinkedList<>();
 		for (int i = 0; i < requiredPermission.length; i++) {
 			if (ContextCompat.checkSelfPermission(thisActivity,
@@ -394,11 +341,15 @@ public class MainActivity<x> extends AppCompatActivity {
 
 			}
 		}
-	}
-
-
 
 	}
+
+	public void start(){
+		Intent intent = new Intent(this, Map_Navigation.class);
+		startActivity(intent);
+	}
+
+}
 
 class MyBroadcastReceiver extends BroadcastReceiver {
 

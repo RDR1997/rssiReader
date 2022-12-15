@@ -1,4 +1,4 @@
-package com.example.rssireader;
+package com.datapirates.ins;
 
 import android.content.Context;
 

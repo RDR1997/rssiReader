@@ -1,10 +1,12 @@
-package com.example.rssireader;
+package com.datapirates.ins;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.rssireader.R;
 
 import java.net.NetworkInterface;
 import java.net.SocketException;
